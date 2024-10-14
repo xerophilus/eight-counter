@@ -4,6 +4,7 @@ import * as DocumentPicker from 'expo-document-picker';
 import { Audio } from 'expo-av';
 import { useAuthStore } from '@/store/authStore';
 import axios from 'axios';
+import styled from 'styled-components/native';
 
 interface SongUploaderProps {
   onSongUpload: (source: { uri: string; duration: number; bpm: number; type: 'file' | 'spotify' }) => void;
@@ -128,13 +129,12 @@ export function SongUploader({ onSongUpload }: SongUploaderProps) {
 
   return (
     <View style={styles.container}>
-      <Button title="Upload MP3 File" onPress={handleFileUpload} />
+      <UploadButton title="Upload MP3 File" onPress={handleFileUpload} />
       
       <Text style={styles.orText}>OR</Text>
       
       <View style={styles.spotifyContainer}>
-        <TextInput
-          style={styles.input}
+        <SpotifyInput
           placeholder="Enter Spotify Track ID"
           value={spotifyTrackId}
           onChangeText={setSpotifyTrackId}
@@ -149,9 +149,9 @@ export function SongUploader({ onSongUpload }: SongUploaderProps) {
       {uploadedFile && (
         <>
           <Text>File uploaded. Duration: {uploadedFile.duration.toFixed(2)} seconds</Text>
-          <TouchableOpacity style={styles.tapButton} onPress={handleTap}>
-            <Text style={styles.tapButtonText}>Tap to the Beat</Text>
-          </TouchableOpacity>
+          <TapButton style={styles.tapButton} onPress={handleTap}>
+            <TapButtonText style={styles.tapButtonText}>Tap to the Beat</TapButtonText>
+          </TapButton>
           {bpm && <Text>Estimated BPM: {bpm}</Text>}
           <Button title="Submit" onPress={handleSubmit} disabled={!bpm} />
         </>
@@ -199,3 +199,31 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
 });
+
+// Styled components
+const UploadButton = styled(Button)`
+  background-color: #007AFF;
+  color: white;
+`;
+
+const TapButton = styled.TouchableOpacity`
+  background-color: #007AFF;
+  padding: 15px;
+  border-radius: 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+`;
+
+const TapButtonText = styled.Text`
+  color: white;
+  text-align: center;
+  font-size: 16px;
+`;
+
+const SpotifyInput = styled.TextInput`
+  border-width: 1px;
+  border-color: #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+`;

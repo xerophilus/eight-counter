@@ -4,6 +4,8 @@ import Slider from '@react-native-community/slider';
 import { Audio } from 'expo-av';
 import { useSheetStore } from '../store/sheetStore';
 import { useAuthStore } from '@/store/authStore';
+import { FontAwesome } from '@expo/vector-icons';
+import styled from 'styled-components/native';
 
 const SPOTIFY_API = 'https://api.spotify.com/v1';
 
@@ -216,10 +218,9 @@ console.log("Spotify Track Info: ", response.json());
             maximumTrackTintColor="#000000"
           />
           <View style={styles.buttonContainer}>
-            <Button
-              title={isPlaying ? 'Pause' : 'Play'}
-              onPress={handlePlayPause}
-            />
+            <PlayPauseButton onPress={handlePlayPause}>
+              <FontAwesome name={isPlaying ? 'pause' : 'play'} size={20} color="#007AFF" />
+            </PlayPauseButton>
           </View>
         </>
       ) : (
@@ -256,3 +257,8 @@ const styles = StyleSheet.create({
     marginTop: 16,
   },
 });
+
+const PlayPauseButton = styled.TouchableOpacity`
+  background-color: transparent;
+  padding: 10px;
+`;
