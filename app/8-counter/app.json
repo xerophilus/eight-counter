@@ -1,0 +1,51 @@
+{
+  "expo": {
+    "name": "8-counter",
+    "slug": "eightcounter",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/icon.png",
+    "scheme": "eightcounter",
+    "userInterfaceStyle": "automatic",
+    "splash": {
+      "image": "./assets/images/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.pittsdev.eightcounter"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/images/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "package": "com.pittsdev.eightcounter"
+    },
+    "web": {
+      "bundler": "metro",
+      "output": "static",
+      "favicon": "./assets/images/favicon.png"
+    },
+    "plugins": [
+      "expo-router"
+    ],
+    "experiments": {
+      "typedRoutes": true
+    },
+    "extra": {
+      "firebaseApiKey": "AIzaSyAfcsCHJpCzynbr3BHadxFDE3CqG-LHtb4",
+      "firebaseAuthDomain": "eightcounter-48953.firebaseapp.com",
+      "firebaseProjectId": "eightcounter-48953",
+      "firebaseStorageBucket": "eightcounter-48953.appspot.com",
+      "firebaseMessagingSenderId": "1067861848959",
+      "firebaseAppId": "1:1067861848959:web:19c8a7e43e2d186214204a",
+      "firebaseMeasurementId": "G-6TWD661KD4",
+      "spotifyClientId": "02daefa906e44523af84b70fb274fe12"
+    }
+  }
+}
